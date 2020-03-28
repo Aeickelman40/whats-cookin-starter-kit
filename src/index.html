@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Whats Cookin</title>
-  </head>
-  <body>
-    <h1>Whats Cookin</h1>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Gotu&display=swap" rel="stylesheet">
 
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/recipes.js"></script>
-    <script type="text/javascript" src="../data/ingredients.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Whats Cookin'</title>
+
+</head>
+
+<body>
+  <header>
+    <h1>Whats Cookin'</h1>
+    <!-- Interpolate user name using innerHTML? -->
+    <p>Welcome //user name !</p>
+    <section class="header-buttons">
+      <button id="home-button">Home</button>
+      <button id="favorite-recipe-button">My Favorite Recipes</button>
+      <button id="recipes-to-cook-button">Recipes To Cook</button>
+    </section>
+    <input id="search-bar" placeholder="Search by ingredient or recipe here" />
+  </header>
+  <main>
+  
+  </main>
+  <script type="text/javascript" src="../data/users.js"></script>
+  <script type="text/javascript" src="../data/recipes.js"></script>
+  <script type="text/javascript" src="../data/ingredients.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
+</body>
+
 </html>

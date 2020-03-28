@@ -1,0 +1,38 @@
+html {
+  font-family: 'Gotu', sans-serif;
+}
+
+header {
+  background-image: linear-gradient(to right, #B1E0CA, #E3F4F6)
+}
+
+h1 {
+  margin-top: 0px;
+}
+
+#home-button,
+#favorite-recipe-button,
+#recipes-to-cook-button,
+#search-bar {
+  border: 1px solid #000;
+  border-radius: 3px;
+  font-family: 'Gotu', sans-serif;
+  margin: 5px;
+  font-size: 20px;
+  position: relative;
+  bottom: 10px;
+}
+
+#search-bar {
+  float: left;
+  background-color: #FFF;
+  width: 30%;
+}
+
+#home-button,
+#favorite-recipe-button,
+#recipes-to-cook-button {
+    float: right;
+    background-color: #EBF5EE;
+    width: 20%;
+}
