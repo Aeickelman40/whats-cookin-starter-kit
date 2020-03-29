@@ -14,15 +14,30 @@
     <h1>Whats Cookin'</h1>
     <!-- Interpolate user name using innerHTML? -->
     <p>Welcome //user name !</p>
-    <section class="header-buttons">
-      <button id="home-button">Home</button>
-      <button id="favorite-recipe-button">My Favorite Recipes</button>
-      <button id="recipes-to-cook-button">Recipes To Cook</button>
-    </section>
-    <input id="search-bar" placeholder="Search by ingredient or recipe here" />
   </header>
   <main>
-  
+    <aside>
+      <h2>My Pantry</h2>
+      <input type="text" id="search-pantry-input" placeholder="Search your pantry here...">
+      <article id="ingredients-container">
+        <!-- ingredients dynamically inserted here -->
+      </article>
+    </aside>
+    <section id="main-right">
+      <nav>
+        <section class="header-buttons">
+          <button id="home-button">Home</button>
+          <button id="all-recipes-button">All Recipes</button>
+          <button id="cooked-recipes-button">Cooked Recipes</button>
+          <button id="favorite-recipe-button">My Favorite Recipes</button>
+          <button id="recipes-to-cook-button">Recipes To Cook</button>
+        </section>
+        <input id="search-recipes-input" placeholder="Search by ingredient or recipe here" />
+      </nav>
+      <article id="recipes-container">
+        <!-- recipes dynamically inserted here -->
+      </article>
+    </section>
   </main>
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/recipes.js"></script>
