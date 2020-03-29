@@ -26,20 +26,62 @@ describe('Pantry', () => {
 
     pantry.getNeededIngredients(recipe)
 
-    expect(pantry.getNeededIngredients(recipe)).to.deep.equal([
-  { ingredient: 18372, amount: 0.5 },
-  { ingredient: 1123, amount: 1 },
-  { ingredient: 19335, amount: 0.5 },
-  { ingredient: 19206, amount: 3 },
-  { ingredient: 19334, amount: 0.5 },
-  { ingredient: 1012047, amount: 24 },
-  { ingredient: 10019903, amount: 2 },
-  { ingredient: 1145, amount: 0.5 },
-  { ingredient: 2050, amount: 0.5 }
-])
+    expect(pantry.getNeededIngredients(recipe)).to.deep.equal([{
+        ingredient: 18372,
+        amount: 0.5
+      },
+      {
+        ingredient: 1123,
+        amount: 1
+      },
+      {
+        ingredient: 19335,
+        amount: 0.5
+      },
+      {
+        ingredient: 19206,
+        amount: 3
+      },
+      {
+        ingredient: 19334,
+        amount: 0.5
+      },
+      {
+        ingredient: 1012047,
+        amount: 24
+      },
+      {
+        ingredient: 10019903,
+        amount: 2
+      },
+      {
+        ingredient: 1145,
+        amount: 0.5
+      },
+      {
+        ingredient: 2050,
+        amount: 0.5
+      }
+    ])
   });
 
-  it.skip('should remove used ingredients from pantry after recipe is made', function() {
+  it('should remove used ingredients from pantry after recipe is made', function() {
+    let recipe = recipeData[1];
 
+    pantry.removeUsedIngredients(recipe);
+
+    expect(pantry.pantry).to.deep.equal([{
+        ingredient: 20081,
+        amount: 3
+      },
+      {
+        ingredient: 11215,
+        amount: 3
+      },
+      {
+        ingredient: 2047,
+        amount: 4.5
+      }
+    ])
   });
 });
