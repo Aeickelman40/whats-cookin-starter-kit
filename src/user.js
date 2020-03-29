@@ -9,7 +9,7 @@ class User {
     this.recipesToCook = [];
     this.recipesCooked = [];
     this.shoppingList = [];
-    // check for usage 
+    // check for usage
     this.recipeData = recipeData;
     this.ingredientsData = ingredientsData;
   }
@@ -41,3 +41,16 @@ class User {
 if (typeof module !== 'undefined') {
   module.exports = User;
 }
+
+
+
+
+class Poster {
+  constructor(url, title) {
+    //PROPERTIES HERE
+    //Ex: this.url = url;
+    //Ex: this.title = title
+  }
+}
+
+var poster1 = new Poster(url, title)

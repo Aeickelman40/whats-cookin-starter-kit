@@ -44,9 +44,24 @@ class Pantry {
     return difference;
   }
   removeUsedIngredients(recipe) {
-    // called by user.cookRecipe
-    // subtracts the amount of each ingredient from pantry
-    return this.pantry.filter(ingredient => {})
+    let modifiedIngredientSupply = [];
+    recipe.ingredients.forEach(recipeIngredient => {
+      let pantryItem = this.pantry.find(currentPantryItem => {
+        return recipeIngredient.id === currentPantryItem.ingredient;
+      })
+      let newIngredientAmount = pantryItem.amount - recipeIngredient.quantity.amount;
+      modifiedIngredientSupply.push({
+        "ingredient": recipeIngredient.id,
+        "amount": newIngredientAmount
+      })
+    })
+    this.pantry.forEach(oldIngredient => {
+      let newIngredient = modifiedIngredientSupply.find(newIngredient => {
+        if (oldIngredient.ingredient === newIngredient.ingredient) {
+          oldIngredient.amount = newIngredient.amount;
+        }
+      })
+    })
   }
 }
 
