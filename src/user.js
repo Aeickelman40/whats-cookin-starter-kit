@@ -1,5 +1,3 @@
-const pantry = require()
-
 class User {
   constructor(user, recipeData, ingredientsData) {
     this.userId = user.id;
@@ -41,16 +39,3 @@ class User {
 if (typeof module !== 'undefined') {
   module.exports = User;
 }
-
-
-
-
-class Poster {
-  constructor(url, title) {
-    //PROPERTIES HERE
-    //Ex: this.url = url;
-    //Ex: this.title = title
-  }
-}
-
-var poster1 = new Poster(url, title)

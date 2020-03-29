@@ -9,7 +9,6 @@ class Recipe {
     this.ingredientsData = ingredientsData;
     this.recipeData = recipeData;
   }
-
   calculateCost() {
     return this.ingredients.reduce((sum, ingredient) => {
       let matchingIngredient = this.ingredientsData.find(specificIngredient => {
@@ -20,7 +19,6 @@ class Recipe {
       return sum;
     }, 0)
   }
-
   getInstructions() {
     return this.instructions;
   }
@@ -28,13 +26,11 @@ class Recipe {
   filterByTag(currentTag) {
     return this.recipeData.filter(recipe => recipe.tags.includes(currentTag))
   }
-
   filterByIngredient(selectedIngredient) {
     return this.recipeData.filter(recipe =>
       recipe.ingredients.find(ingredient =>
         ingredient.name === selectedIngredient))
   }
-
 }
 
 if (typeof module !== 'undefined') {
