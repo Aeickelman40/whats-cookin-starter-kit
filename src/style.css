@@ -3,7 +3,8 @@ html {
 }
 
 header {
-  background-image: linear-gradient(to right, #B1E0CA, #E3F4F6)
+  background-image: linear-gradient(to right, #B1E0CA, #E3F4F6);
+  height: 20vh;
 }
 
 h1 {
@@ -47,21 +48,23 @@ nav {
   bottom: 10px;
 }
 
-#search-recipes-input {
-  /* float: left; */
-  background-color: #FFF;
-  font-size: 15px;
-  /* width: 30%; */
-}
-
 #home-button,
 #favorite-recipe-button,
 #recipes-to-cook-button,
 #all-recipes-button,
 #cooked-recipes-button {
-    /* float: right; */
+    float: right;
     background-color: #EBF5EE;
-    /* width: 20%; */
+    position: relative;
+    bottom: 80px;
+    width: 20%;
+}
+
+#search-recipes-input {
+  width: 40.5%;
+  float: right;
+  position: relative;
+  bottom: 75px;
 }
 
 .recipes-container {
