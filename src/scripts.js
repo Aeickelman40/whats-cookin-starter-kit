@@ -99,20 +99,26 @@ function displayRecipes() {
     recipesContainer.innerHTML += `
     <section class="recipe-card">
       <div class="recipe-name-container">
-        <p>${newRecipe.name}</p>
+        <h2 class="recipe-name">${newRecipe.name}</h2>
       </div>
       <div class="recipe-info-container">
         <div class="instructions-container">
-          <ol>
+          <h3 class="recipe-info-header">Cooking Instructions:<h3>
+          <ol class="recipe-info">
             ${instructions}
           </ol>
         </div>
+        <h3 class="recipe-info-header">Ingredients:<h3>
         <div class="ingredients-container">
-          <ul>
+          <ul class="recipe-info">
             ${ingredients}
           </ul>
+          <img class="recipe-image" src=${newRecipe.image}>
         </div>
-        <img src=${newRecipe.image}>
+        <div class="recipe-buttons-container">
+          <button class="recipe-button add-ingredients-button">Add Ingredients to Shopping List</button>
+          <button class="recipe-button add-to-queue-button">Add Recipe to Cooking Queue</button>
+        </div>
         <p>Tags: ${newRecipe.tags}</p>
       </div>
     </section>`
