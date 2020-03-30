@@ -21,7 +21,7 @@ body {
 }
 
 aside {
-  min-width: 20%;
+  min-width: 100%;
   background-color: #EEEEEE;
   border: 2px solid grey;
 }
@@ -67,14 +67,14 @@ nav {
   bottom: 75px;
 }
 
-.recipes-container {
-  column-width: 3em;
+#recipes-container {
+  column-width: 5em;
   columns: 2;
 }
 
 .recipe-card {
   background-color: #EEEEEE;
-  width: 40%;
+  width: 90%;
   display: inline-block;
   margin: 2em;
   padding: 15px;
@@ -116,7 +116,7 @@ nav {
 }
 
 .recipe-button:hover{
-  transform: scale(1.1);
+  transform: scale(1.05);
   background-color: #747474;
   color: white;
 }
@@ -129,6 +129,13 @@ nav {
 #ingredients-container {
   display: flex;
   flex-direction: column;
+  max-height: 100vw;
+  overflow: scroll;
+}
+
+.ingredients-box {
+  display: flex;
+  flex-direction: row;
 }
 
 .pantry-header {
