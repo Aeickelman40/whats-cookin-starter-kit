@@ -32,10 +32,6 @@ function showAllRecipes() {
   // get rid of this function, make it just a home button
 }
 
-function returnToMainPage() {
-  // called by filterMainPageRecipes
-  // basically same as showAllRecipes - maybe we reduce that to one button
-}
 
 function showCookedRecipes() {
   // called by filterMainPageRecipes
@@ -74,8 +70,18 @@ function searchPantry() {
 
 function searchRecipes() {
   // function that searches the recipes by
-  // ingredient, tag, or recipe name
-}
+  // ingredient, tag, or recipe name  findRecipe(searchText) {
+    return this.recipes.filter(recipe => {
+      let matchingIngredient;
+      return recipe.ingredients.find(ingredient => {
+        matchingIngredient = this.ingredients.find(specificIngredient => {
+          return specificIngredient.id === ingredient.id;
+        });
+        return (matchingIngredient.name.toLowerCase().includes(searchText)) ||
+        (recipe.name.toLowerCase().includes(searchText.toLowerCase()))
+      });
+    })
+  }
 
 function displayData() {
   displayUserInfo();
