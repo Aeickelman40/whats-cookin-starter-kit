@@ -19,11 +19,11 @@ function filterMainPageRecipes() {
   // function that uses event delegation to show
   // recipes based on which button was clicked
   // if statement / iterator to decide which button was clicked on
-    // showAllRecipes();
-    // returnToMainPage();
-    // showCookedRecipes();
-    // showFavoriteRecipes();
-    // showRecipeQueue();
+  // showAllRecipes();
+  // returnToMainPage();
+  // showCookedRecipes();
+  // showFavoriteRecipes();
+  // showRecipeQueue();
 }
 
 function showAllRecipes() {
@@ -45,7 +45,7 @@ function showFavoriteRecipes() {
   // if none, shows a message telling a user to favorite a recipe
 }
 
-function showRecipeQueue () {
+function showRecipeQueue() {
   // called by filterMainPageRecipes
   // shows a users queue of recipes to cook
   // if none, shows a message telling a user to add a recipe to the queue
@@ -70,18 +70,21 @@ function searchPantry() {
 
 function searchRecipes() {
   // function that searches the recipes by
-  // ingredient, tag, or recipe name  findRecipe(searchText) {
-    return this.recipes.filter(recipe => {
-      let matchingIngredient;
-      return recipe.ingredients.find(ingredient => {
-        matchingIngredient = this.ingredients.find(specificIngredient => {
-          return specificIngredient.id === ingredient.id;
-        });
-        return (matchingIngredient.name.toLowerCase().includes(searchText)) ||
-        (recipe.name.toLowerCase().includes(searchText.toLowerCase()))
-      });
-    })
-  }
+  // ingredient, tag, or recipe name
+  // let newRecipe = new Recipe(recipe,
+  //   ingredientsData,
+  //   recipeData);
+  // return this.recipes.filter(recipe => {
+  //   let matchingIngredient;
+  //   return recipe.ingredients.find(ingredient => {
+  //     matchingIngredient = this.ingredients.find(specificIngredient => {
+  //       return specificIngredient.id === ingredient.id;
+  //     });
+  //     return (matchingIngredient.name.toLowerCase().includes(searchText)) ||
+  //       (recipe.name.toLowerCase().includes(searchText.toLowerCase()))
+  //   });
+  // })
+}
 
 function displayData() {
   displayUserInfo();
@@ -90,9 +93,9 @@ function displayData() {
 
 function displayUserInfo() {
   console.log(usersData);
-    // instantiates user at random, shows name
-    // instantiates pantry from user
-    // dynamically creates cards for each ingredient in pantry
+  // instantiates user at random, shows name
+  // instantiates pantry from user
+  // dynamically creates cards for each ingredient in pantry
 }
 
 function displayRecipes() {
