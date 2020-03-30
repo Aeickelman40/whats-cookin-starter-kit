@@ -3,7 +3,8 @@ html {
 }
 
 header {
-  background-image: linear-gradient(to right, #B1E0CA, #E3F4F6)
+  background-image: linear-gradient(to right, #B1E0CA, #E3F4F6);
+  height: 20vh;
 }
 
 h1 {
@@ -20,7 +21,7 @@ body {
 }
 
 aside {
-  min-width: 20%
+  min-width: 20%;
 }
 
 nav {
@@ -41,16 +42,7 @@ nav {
   font-family: 'Gotu', sans-serif;
   margin: 5px;
   font-size: 20px;
-  position: relative;
-  bottom: 10px;
   outline: none;
-}
-
-#search-recipes-input {
-  /* float: left; */
-  background-color: #FFF;
-  font-size: 15px;
-  /* width: 30%; */
 }
 
 #home-button,
@@ -58,7 +50,25 @@ nav {
 #recipes-to-cook-button,
 #all-recipes-button,
 #cooked-recipes-button {
-    /* float: right; */
+    float: right;
     background-color: #EBF5EE;
-    /* width: 20%; */
+    position: relative;
+    bottom: 80px;
+    width: 20%;
 }
+
+#search-recipes-input {
+  width: 40.5%;
+  float: right;
+  position: relative;
+  bottom: 75px;
+}
+
+/* .search-button,
+.search-icon {
+  float: right;
+  height: 7vh;
+  width: 7vh;
+  position: relative;
+  bottom: 40px;
+} */

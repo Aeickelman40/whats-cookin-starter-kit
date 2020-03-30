@@ -14,6 +14,16 @@
     <h1>Whats Cookin'</h1>
     <!-- Interpolate user name using innerHTML? -->
     <p>Welcome //user name !</p>
+    <section class="header-buttons">
+      <button id="home-button">Home</button>
+      <button id="cooked-recipes-button">Cooked Recipes</button>
+      <button id="favorite-recipe-button">My Favorite Recipes</button>
+      <button id="recipes-to-cook-button">Recipes To Cook</button>
+    </section>
+      <input id="search-recipes-input" placeholder="Search by ingredient or recipe here..." />
+      <!-- <button class="search-button">
+        <img class="search-icon" src="https://img.icons8.com/pastel-glyph/2x/search--v1.png" />
+    </button> -->
   </header>
   <main>
     <aside>
@@ -25,14 +35,6 @@
     </aside>
     <section id="main-right">
       <nav>
-        <section class="header-buttons">
-          <button id="home-button">Home</button>
-          <button id="all-recipes-button">All Recipes</button>
-          <button id="cooked-recipes-button">Cooked Recipes</button>
-          <button id="favorite-recipe-button">My Favorite Recipes</button>
-          <button id="recipes-to-cook-button">Recipes To Cook</button>
-        </section>
-        <input id="search-recipes-input" placeholder="Search by ingredient or recipe here" />
       </nav>
       <article id="recipes-container">
         <!-- recipes dynamically inserted here -->
