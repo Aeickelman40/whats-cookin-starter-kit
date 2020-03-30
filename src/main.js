@@ -3,9 +3,9 @@ const Recipe = require('../src/recipe');
 const Pantry = require('..src/pantry');
 const Ingredient = require('../src/ingredient');
 
-const userData = require('../data/users.js');
-const recipeData = require('../data/recipes.js');
-const ingredientData = require('../data/ingredients.js');
+// const userData = require('../data/users.js');
+// const recipeData = require('../data/recipes.js');
+// const ingredientData = require('../data/ingredients.js');
 
 const headerButtonsContainer = document.querySelector(".header-buttons");
 const allRecipesButton = document.querySelector("#all-recipes-button");
@@ -87,20 +87,19 @@ function searchRecipes() {
 }
 
 function displayData() {
-  // maybe a helper function that does the following:
-    // displayUserInfo();
-    // displayRecipes();
+  displayUserInfo();
+  displayRecipes();
 }
 
 function displayUserInfo() {
-  // called by displayData, shows user info
+  console.log(userData);
     // instantiates user at random, shows name
     // instantiates pantry from user
     // dynamically creates cards for each ingredient in pantry
 }
 
 function displayRecipes() {
-  // called by displayData, shows all recipes
+  console.log(recipeData);
     // instantiates all recipes
     // dynamically creates cards for each recipe using innerHTML
 }
