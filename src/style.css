@@ -22,6 +22,8 @@ body {
 
 aside {
   min-width: 20%;
+  background-color: #EEEEEE;
+  border: 2px solid grey;
 }
 
 nav {
@@ -42,7 +44,8 @@ nav {
   font-family: 'Gotu', sans-serif;
   margin: 5px;
   font-size: 20px;
-  outline: none;
+  position: relative;
+  bottom: 10px;
 }
 
 #home-button,
@@ -64,11 +67,79 @@ nav {
   bottom: 75px;
 }
 
-/* .search-button,
-.search-icon {
-  float: right;
-  height: 7vh;
-  width: 7vh;
-  position: relative;
-  bottom: 40px;
-} */
+.recipes-container {
+  column-width: 3em;
+  columns: 2;
+}
+
+.recipe-card {
+  background-color: #EEEEEE;
+  width: 40%;
+  display: inline-block;
+  margin: 2em;
+  padding: 15px;
+  border: 2px solid grey;
+}
+
+.recipe-image {
+  width: 50%;
+  align-self: center;
+  margin: 15px;
+}
+
+.recipe-name {
+  font-size: 23px;
+  width: 70%;
+}
+
+.recipe-name-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.favorite-recipe-button {
+  align-self: center;
+  margin: 5px;
+}
+
+.recipe-info {
+  font-size: 13px;
+}
+
+.recipe-button {
+  font-family: 'Gotu', sans-serif;
+  background-color: #EBF5EE;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 3px;
+  margin: 10px;
+}
+
+.recipe-button:hover{
+  transform: scale(1.1);
+  background-color: #747474;
+  color: white;
+}
+
+.recipe-buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#ingredients-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pantry-header {
+  text-align: center;
+}
+
+.ingredient-card {
+  background-color: #EBF5EE;
+  width: 80%;
+  padding: 7px;
+  border: 2px solid grey;
+  margin: 10px;
+  align-self: center;
+}

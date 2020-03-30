@@ -12,7 +12,7 @@
 <body>
   <header>
     <h1>Whats Cookin'</h1>
-    <!-- Interpolate user name using innerHTML? -->
+    <p id="welcome-user-banner"></p>
     <p>Welcome //user name !</p>
     <section class="header-buttons">
       <button id="home-button">Home</button>
@@ -21,13 +21,10 @@
       <button id="recipes-to-cook-button">Recipes To Cook</button>
     </section>
       <input id="search-recipes-input" placeholder="Search by ingredient or recipe here..." />
-      <!-- <button class="search-button">
-        <img class="search-icon" src="https://img.icons8.com/pastel-glyph/2x/search--v1.png" />
-    </button> -->
   </header>
   <main>
     <aside>
-      <h2>My Pantry</h2>
+      <h2 class="pantry-header">My Pantry</h2>
       <input type="text" id="search-pantry-input" placeholder="Search your pantry here...">
       <article id="ingredients-container">
         <!-- ingredients dynamically inserted here -->

@@ -8,6 +8,7 @@ const searchPantryInput = document.querySelector("#search-pantry-input");
 const searchRecipesInput = document.querySelector("#search-recipes-input");
 const ingredientsContainer = document.querySelector("#ingredients-container");
 const recipesContainer = document.querySelector("#recipes-container");
+const welcomeUserBanner = document.querySelector("#welcome-user-banner");
 
 headerButtonsContainer.addEventListener("click", filterMainPageRecipes);
 searchPantryInput.addEventListener("input", searchPantry);
@@ -92,10 +93,20 @@ function displayData() {
 }
 
 function displayUserInfo() {
-  console.log(usersData);
-  // instantiates user at random, shows name
-  // instantiates pantry from user
-  // dynamically creates cards for each ingredient in pantry
+  let randomUser = usersData[Math.floor(Math.random() * usersData.length)];
+  let chosenUser = new User(randomUser)
+  let userPantry = chosenUser.pantry;
+  console.log(chosenUser.pantry)
+  welcomeUserBanner.innerHTML = `Welcome ${chosenUser.name}!`;
+  userPantry.forEach(ingredient => {
+    let ingredients = userPantry.map(specificIngredient => `Ingredient: ${specificIngredient.ingredient}`);
+    let amounts = userPantry.map(specificAmount => `Amount: ${specificAmount.amount}`);
+    ingredientsContainer.innerHTML+= `
+    <section class="ingredient-card">
+      <p class="ingredient-name">Ingredient: ${ingredient.ingredient}</p>
+      <p class="ingredient-amount">Amount: ${ingredient.amount}</p>
+    </section>`
+  });
 }
 
 function displayRecipes() {
@@ -108,20 +119,27 @@ function displayRecipes() {
     recipesContainer.innerHTML += `
     <section class="recipe-card">
       <div class="recipe-name-container">
-        <p>${newRecipe.name}</p>
+        <h2 class="recipe-name">${newRecipe.name}</h2>
+        <button class="recipe-button favorite-recipe-button">Favorite This Recipe</button>
       </div>
       <div class="recipe-info-container">
         <div class="instructions-container">
-          <ol>
+          <h3 class="recipe-info-header">Cooking Instructions:<h3>
+          <ol class="recipe-info">
             ${instructions}
           </ol>
         </div>
+        <h3 class="recipe-info-header">Ingredients:<h3>
         <div class="ingredients-container">
-          <ul>
+          <ul class="recipe-info">
             ${ingredients}
           </ul>
+          <img class="recipe-image" src=${newRecipe.image}>
         </div>
-        <img src=${newRecipe.image}>
+        <div class="recipe-buttons-container">
+          <button class="recipe-button add-ingredients-button">Add Ingredients to Shopping List</button>
+          <button class="recipe-button add-to-queue-button">Add Recipe to Cooking Queue</button>
+        </div>
         <p>Tags: ${newRecipe.tags}</p>
       </div>
     </section>`
