@@ -123,11 +123,20 @@ nav {
   flex-direction: column;
 }
 
-.ingredients-container {
+#ingredients-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .pantry-header {
   text-align: center;
+}
+
+.ingredient-card {
+  background-color: #EBF5EE;
+  width: 80%;
+  padding: 7px;
+  border: 2px solid grey;
+  margin: 10px;
+  align-self: center;
 }

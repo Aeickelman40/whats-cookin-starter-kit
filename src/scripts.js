@@ -8,6 +8,7 @@ const searchPantryInput = document.querySelector("#search-pantry-input");
 const searchRecipesInput = document.querySelector("#search-recipes-input");
 const ingredientsContainer = document.querySelector("#ingredients-container");
 const recipesContainer = document.querySelector("#recipes-container");
+const welcomeUserBanner = document.querySelector("#welcome-user-banner");
 
 headerButtonsContainer.addEventListener("click", filterMainPageRecipes);
 searchPantryInput.addEventListener("input", searchPantry);
@@ -83,12 +84,20 @@ function displayData() {
 }
 
 function displayUserInfo() {
-  console.log(usersData[0].pantry);
-  let userPantry = usersData[0].pantry;
-  let ingredients = userPantry.map(ingredient => `Ingredient: ${ingredient.ingredient}`);
-  let amounts = userPantry.map(ingredient => `Amount: ${ingredient.amount}`);
-  console.log('ingredient', ingredients)
-  console.log('amount', amounts);
+  let randomUser = usersData[Math.floor(Math.random() * usersData.length)];
+  let chosenUser = new User(randomUser)
+  let userPantry = chosenUser.pantry;
+  console.log(chosenUser.pantry)
+  welcomeUserBanner.innerHTML = `Welcome ${chosenUser.name}!`;
+  userPantry.forEach(ingredient => {
+    let ingredients = userPantry.map(specificIngredient => `Ingredient: ${specificIngredient.ingredient}`);
+    let amounts = userPantry.map(specificAmount => `Amount: ${specificAmount.amount}`);
+    ingredientsContainer.innerHTML+= `
+    <section class="ingredient-card">
+      <p class="ingredient-name">Ingredient: ${ingredient.ingredient}</p>
+      <p class="ingredient-amount">Amount: ${ingredient.amount}</p>
+    </section>`
+  });
 }
 
 function displayRecipes() {
