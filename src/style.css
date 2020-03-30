@@ -20,7 +20,9 @@ body {
 }
 
 aside {
-  min-width: 20%
+  min-width: 20%;
+  background-color: #EEEEEE;
+  border: 2px solid grey;
 }
 
 nav {
@@ -77,11 +79,24 @@ nav {
 }
 
 .recipe-image {
-  width: 40%;
+  width: 50%;
+  align-self: center;
+  margin: 15px;
 }
 
 .recipe-name {
   font-size: 23px;
+  width: 70%;
+}
+
+.recipe-name-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.favorite-recipe-button {
+  align-self: center;
+  margin: 5px;
 }
 
 .recipe-info {
@@ -94,8 +109,25 @@ nav {
   font-size: 12px;
   padding: 10px;
   border-radius: 3px;
+  margin: 10px;
+}
+
+.recipe-button:hover{
+  transform: scale(1.1);
+  background-color: #747474;
+  color: white;
+}
+
+.recipe-buttons-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .ingredients-container {
-  
+  display: flex;
+  flex-direction: row;
+}
+
+.pantry-header {
+  text-align: center;
 }

@@ -83,10 +83,12 @@ function displayData() {
 }
 
 function displayUserInfo() {
-  console.log(usersData);
-    // instantiates user at random, shows name
-    // instantiates pantry from user
-    // dynamically creates cards for each ingredient in pantry
+  console.log(usersData[0].pantry);
+  let userPantry = usersData[0].pantry;
+  let ingredients = userPantry.map(ingredient => `Ingredient: ${ingredient.ingredient}`);
+  let amounts = userPantry.map(ingredient => `Amount: ${ingredient.amount}`);
+  console.log('ingredient', ingredients)
+  console.log('amount', amounts);
 }
 
 function displayRecipes() {
@@ -100,6 +102,7 @@ function displayRecipes() {
     <section class="recipe-card">
       <div class="recipe-name-container">
         <h2 class="recipe-name">${newRecipe.name}</h2>
+        <button class="recipe-button favorite-recipe-button">Favorite This Recipe</button>
       </div>
       <div class="recipe-info-container">
         <div class="instructions-container">
