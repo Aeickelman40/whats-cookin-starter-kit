@@ -94,7 +94,7 @@ function displayData() {
 
 function displayUserInfo() {
   let randomUser = usersData[Math.floor(Math.random() * usersData.length)];
-  let chosenUser = new User(randomUser)
+  let chosenUser = new User(randomUser);
   let userPantry = chosenUser.pantry;
   console.log(chosenUser.pantry)
   welcomeUserBanner.innerHTML = `Welcome ${chosenUser.name}!`;
@@ -130,7 +130,7 @@ function displayRecipes() {
           </ol>
         </div>
         <h3 class="recipe-info-header">Ingredients:<h3>
-        <div class="ingredients-container">
+        <div class="ingredients-box">
           <ul class="recipe-info">
             ${ingredients}
           </ul>
