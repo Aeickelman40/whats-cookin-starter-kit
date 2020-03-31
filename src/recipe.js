@@ -19,10 +19,12 @@ class Recipe {
       return sum;
     }, 0)
   }
+  convertIdsToIngredientNames() {
+    
+  }
   getInstructions() {
     return this.instructions;
   }
-
   filterByTag(currentTag) {
     return this.recipeData.filter(recipe => recipe.tags.includes(currentTag))
   }

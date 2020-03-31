@@ -87,6 +87,28 @@ function searchRecipes() {
   // })
 }
 
+
+
+function convertRecipeIdsToIngredientNames(recipe) {
+  recipe.ingredients.forEach(ingredient => {
+    ingredientsData.find(item => {
+      if (ingredient.id === item.id) {
+        ingredient.name = item.name;
+      }
+    })
+  })
+}
+
+function convertPantryIdsToIngredientNames(pantry) {
+  pantry.forEach(ingredient => {
+    ingredientsData.find(item => {
+      if (ingredient.ingredient === item.id) {
+        ingredient.name = item.name;
+      }
+    })
+  })
+}
+
 function displayData() {
   displayUserInfo();
   displayRecipes();
@@ -96,14 +118,12 @@ function displayUserInfo() {
   let randomUser = usersData[Math.floor(Math.random() * usersData.length)];
   let chosenUser = new User(randomUser);
   let userPantry = chosenUser.pantry;
-  console.log(chosenUser.pantry)
   welcomeUserBanner.innerHTML = `Welcome ${chosenUser.name}!`;
   userPantry.forEach(ingredient => {
-    let ingredients = userPantry.map(specificIngredient => `Ingredient: ${specificIngredient.ingredient}`);
-    let amounts = userPantry.map(specificAmount => `Amount: ${specificAmount.amount}`);
+    convertPantryIdsToIngredientNames(userPantry)
     ingredientsContainer.innerHTML+= `
     <section class="ingredient-card">
-      <p class="ingredient-name">Ingredient: ${ingredient.ingredient}</p>
+      <p class="ingredient-name capitalize">Ingredient: ${ingredient.name}</p>
       <p class="ingredient-amount">Amount: ${ingredient.amount}</p>
     </section>`
   });
@@ -114,8 +134,9 @@ function displayRecipes() {
     let newRecipe = new Recipe(recipe,
       ingredientsData,
       recipeData);
+    convertRecipeIdsToIngredientNames(newRecipe)
     let instructions = newRecipe.instructions.map(instruction => `<li>${instruction.instruction}</li>`).join("\n");
-    let ingredients = newRecipe.ingredients.map(ingredient => `<li>${ingredient.id} (${ingredient.quantity.amount} ${ingredient.quantity.unit})</li>`).join("\n");
+    let ingredients = newRecipe.ingredients.map(ingredient => `<li>${ingredient.name} (${ingredient.quantity.amount} ${ingredient.quantity.unit})</li>`).join("\n");
     recipesContainer.innerHTML += `
     <section class="recipe-card">
       <div class="recipe-name-container">
@@ -131,7 +152,7 @@ function displayRecipes() {
         </div>
         <h3 class="recipe-info-header">Ingredients:<h3>
         <div class="ingredients-box">
-          <ul class="recipe-info">
+          <ul class="recipe-info capitalize">
             ${ingredients}
           </ul>
           <img class="recipe-image" src=${newRecipe.image}>
@@ -140,7 +161,7 @@ function displayRecipes() {
           <button class="recipe-button add-ingredients-button">Add Ingredients to Shopping List</button>
           <button class="recipe-button add-to-queue-button">Add Recipe to Cooking Queue</button>
         </div>
-        <p>Tags: ${newRecipe.tags}</p>
+        <p class="capitalize">Tags: ${newRecipe.tags}</p>
       </div>
     </section>`
   });
