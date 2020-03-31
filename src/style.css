@@ -34,11 +34,11 @@ nav {
 }
 
 #home-button,
-#favorite-recipe-button,
+#favorite-recipes-button,
 #recipes-to-cook-button,
 #all-recipes-button,
 #cooked-recipes-button,
-#shopping-list,
+#shopping-list-button,
 #search-recipes-input {
   border: 1px solid #000;
   border-radius: 3px;
@@ -50,10 +50,10 @@ nav {
 }
 
 #home-button,
-#favorite-recipe-button,
+#favorite-recipes-button,
 #recipes-to-cook-button,
 #all-recipes-button,
-#shopping-list,
+#shopping-list-button,
 #cooked-recipes-button {
     float: right;
     background-color: #EBF5EE;
@@ -63,11 +63,11 @@ nav {
 }
 
 #home-button:hover,
-#favorite-recipe-button:hover,
+#favorite-recipes-button:hover,
 #recipes-to-cook-button:hover,
 #all-recipes-button:hover,
 #cooked-recipes-button:hover,
-#shopping-list:hover {
+#shopping-list-button:hover {
   transform: scale(1.05);
   background-color: #747474;
   color: white;
@@ -168,4 +168,12 @@ nav {
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.button-active {
+  background-color: yellow;
+}
+
+.hidden {
+  display: none;
 }
