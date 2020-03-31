@@ -88,7 +88,7 @@ nav {
 
 .recipe-card {
   background-color: #EEEEEE;
-  width: 90%;
+  width: 85%;
   display: inline-block;
   margin: 2em;
   padding: 15px;
@@ -164,4 +164,8 @@ nav {
   border: 2px solid grey;
   margin: 10px;
   align-self: center;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
