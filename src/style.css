@@ -38,6 +38,7 @@ nav {
 #recipes-to-cook-button,
 #all-recipes-button,
 #cooked-recipes-button,
+#shopping-list,
 #search-recipes-input {
   border: 1px solid #000;
   border-radius: 3px;
@@ -52,12 +53,25 @@ nav {
 #favorite-recipe-button,
 #recipes-to-cook-button,
 #all-recipes-button,
+#shopping-list,
 #cooked-recipes-button {
     float: right;
     background-color: #EBF5EE;
     position: relative;
     bottom: 80px;
-    width: 20%;
+    width: 15%;
+}
+
+#home-button:hover,
+#favorite-recipe-button:hover,
+#recipes-to-cook-button:hover,
+#all-recipes-button:hover,
+#cooked-recipes-button:hover,
+#shopping-list:hover {
+  transform: scale(1.05);
+  background-color: #747474;
+  color: white;
+  cursor: pointer;
 }
 
 #search-recipes-input {
@@ -119,6 +133,7 @@ nav {
   transform: scale(1.05);
   background-color: #747474;
   color: white;
+  cursor: pointer;
 }
 
 .recipe-buttons-container {
