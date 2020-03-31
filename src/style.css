@@ -88,9 +88,9 @@ nav {
 
 .recipe-card {
   background-color: #EEEEEE;
-  width: 85%;
+  width: 80%;
   display: inline-block;
-  margin: 2em;
+  margin: 25px;
   padding: 15px;
   border: 2px solid grey;
 }

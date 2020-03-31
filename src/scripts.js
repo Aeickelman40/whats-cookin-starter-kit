@@ -13,6 +13,7 @@ const welcomeUserBanner = document.querySelector("#welcome-user-banner");
 headerButtonsContainer.addEventListener("click", filterMainPageRecipes);
 searchPantryInput.addEventListener("input", searchPantry);
 searchRecipesInput.addEventListener("input", searchRecipes);
+recipesContainer.addEventListener("click", testFunction);
 
 window.onload = displayData();
 
@@ -25,6 +26,10 @@ function filterMainPageRecipes() {
   // showCookedRecipes();
   // showFavoriteRecipes();
   // showRecipeQueue();
+}
+
+function testFunction() {
+  console.log(event.target);
 }
 
 function showAllRecipes() {
