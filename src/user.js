@@ -15,12 +15,13 @@ class User {
     this.favoriteRecipes.push(recipe);
   }
   removeFromFavorites(recipeToRemove) {
-    this.favoriteRecipes.forEach(recipe => {
-      if (recipeToRemove === recipe) {
-        this.favoriteRecipes.splice(recipeToRemove, 1);
-      }
+    let matchingRecipe = this.favoriteRecipes.find(recipe => {
+      return recipeToRemove.id == recipe.id;
     })
+    console.log('matching', matchingRecipe);
+    this.favoriteRecipes.splice(matchingRecipe, 1);
   }
+  // try for loop 
   cookRecipe(recipeToCook) {
     this.removeFromRecipesToCook(recipeToCook);
     this.addToRecipesCooked(recipeToCook);

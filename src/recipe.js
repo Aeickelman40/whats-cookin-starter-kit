@@ -19,9 +19,6 @@ class Recipe {
       return sum;
     }, 0)
   }
-  convertIdsToIngredientNames() {
-    
-  }
   getInstructions() {
     return this.instructions;
   }

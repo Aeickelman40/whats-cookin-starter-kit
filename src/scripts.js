@@ -4,30 +4,41 @@ const homeButton = document.querySelector("#home-button");
 const cookedRecipesButton = document.querySelector("#cooked-recipes-button");
 const favoriteRecipesButton = document.querySelector("#favorite-recipes-button");
 const recipesToCookButton = document.querySelector("#recipes-to-cook-button");
+const shoppingListButton = document.querySelector("#shopping-list-button");
 const searchPantryInput = document.querySelector("#search-pantry-input");
 const searchRecipesInput = document.querySelector("#search-recipes-input");
 const ingredientsContainer = document.querySelector("#ingredients-container");
 const recipesContainer = document.querySelector("#recipes-container");
 const welcomeUserBanner = document.querySelector("#welcome-user-banner");
+const randomUser = usersData[Math.floor(Math.random() * usersData.length)];
+const chosenUser = new User(randomUser);
 
-headerButtonsContainer.addEventListener("click", filterMainPageRecipes);
+// headerButtonsContainer.addEventListener("click", filterMainPageRecipes);
 searchPantryInput.addEventListener("input", searchPantry);
 searchRecipesInput.addEventListener("input", searchRecipes);
+shoppingListButton.addEventListener("click", showShoppingList);
+recipesToCookButton.addEventListener("click", showRecipeQueue);
+favoriteRecipesButton.addEventListener("click", showFavoriteRecipes);
+cookedRecipesButton.addEventListener("click", showCookedRecipes);
+homeButton.addEventListener("click", returnHome);
+recipesContainer.addEventListener("click", recipeButtonHandler);
+
 
 window.onload = displayData();
 
-function filterMainPageRecipes() {
-  // function that uses event delegation to show
-  // recipes based on which button was clicked
-  // if statement / iterator to decide which button was clicked on
-  // showAllRecipes();
-  // returnToMainPage();
-  // showCookedRecipes();
-  // showFavoriteRecipes();
-  // showRecipeQueue();
-}
+// function filterMainPageRecipes() {
+//   // function that uses event delegation to show
+//   // recipes based on which button was clicked
+//   // if statement / iterator to decide which button was clicked on
+//   // showAllRecipes();
+//   // returnToMainPage();
+//   // showCookedRecipes();
+//   // showFavoriteRecipes();
+//   // showRecipeQueue();
+//
+// }
 
-function showAllRecipes() {
+function returnHome() {
   // called by filterMainPageRecipes
   // shows all available recipes if correct button is clicked
   // get rid of this function, make it just a home button
@@ -35,21 +46,26 @@ function showAllRecipes() {
 
 
 function showCookedRecipes() {
-  // called by filterMainPageRecipes
-  // shows all recipes a user has cooked
-  // if none, shows a message telling a user to cook a recipe
+
 }
 
 function showFavoriteRecipes() {
-  // called by filterMainPageRecipes
-  // shows a users favorite recipes
-  // if none, shows a message telling a user to favorite a recipe
+  let favoriteButtons = Array.from(document.querySelectorAll('.favorite-recipe-button'));
+  favoriteButtons.forEach(button => {
+    if (!button.classList.contains("button-active")) {
+      button.parentNode.parentNode.classList.add("hidden");
+    }
+  })
 }
 
 function showRecipeQueue() {
   // called by filterMainPageRecipes
   // shows a users queue of recipes to cook
   // if none, shows a message telling a user to add a recipe to the queue
+}
+
+function showShoppingList() {
+
 }
 
 // function from checkyoself:
@@ -115,10 +131,8 @@ function displayData() {
 }
 
 function displayUserInfo() {
-  let randomUser = usersData[Math.floor(Math.random() * usersData.length)];
-  let chosenUser = new User(randomUser);
   let userPantry = chosenUser.pantry;
-  welcomeUserBanner.innerHTML = `Welcome ${chosenUser.name}!`;
+  welcomeUserBanner.innerHTML += `${chosenUser.name}`;
   userPantry.forEach(ingredient => {
     convertPantryIdsToIngredientNames(userPantry)
     ingredientsContainer.innerHTML+= `
@@ -127,6 +141,7 @@ function displayUserInfo() {
       <p class="ingredient-amount">Amount: ${ingredient.amount}</p>
     </section>`
   });
+  return chosenUser;
 }
 
 function displayRecipes() {
@@ -141,7 +156,7 @@ function displayRecipes() {
     <section class="recipe-card">
       <div class="recipe-name-container">
         <h2 class="recipe-name">${newRecipe.name}</h2>
-        <button class="recipe-button favorite-recipe-button">Favorite This Recipe</button>
+        <button class="recipe-button favorite-recipe-button" id="${newRecipe.id}">Favorite This Recipe</button>
       </div>
       <div class="recipe-info-container">
         <div class="instructions-container">
@@ -172,28 +187,47 @@ function expandRecipeInfo() {
   // shows instructions and ingredients
 }
 
-function favoriteRecipe() {
-  // on-click of a star or some sort of favorite button
-  // calls user.addToFavorites()
-  // changes DOM to show recipe is now a favorite
+function recipeButtonHandler() {
+  if (event.target.classList.contains("favorite-recipe-button")) {
+    favoriteRecipe(event);
+  }
+  if (event.target.classList.contains("add-ingredients-button")) {
+    addToShoppingList(event);
+  }
+  if (event.target.classList.contains("add-to-queue-button")) {
+    addToRecipeQueue(event);
+  }
 }
 
-function removeRecipeFromFavorites() {
-  // on-click of a star or some sort of favorite button
-  // calls user.removeFromFavorites()
-  // changes DOM to show recipe is no longer a favorite
-}
-
-function showNeededIngredients() {
-  // on-click of button on specific recipe
-  // calls pantry.determineIfHasIngredients()
-  // shows a list of needed ingredients with amounts
+function favoriteRecipe(event) {
+  let chosenRecipe = recipeData.find(recipe => {
+    return recipe.id == event.target.id;
+  })
+  if (event.target.classList.contains("button-active")) {
+    chosenUser.removeFromFavorites(chosenRecipe);
+    event.target.classList.remove("button-active");
+    event.target.innerText = "Favorite This Recipe";
+    console.log('removed', chosenUser.favoriteRecipes);
+  } else {
+    chosenUser.addToFavorites(chosenRecipe);
+    event.target.classList.add("button-active");
+    event.target.innerText = "In My Favorites!";
+    console.log('added', chosenUser.favoriteRecipes);
+  }
 }
 
 function addToShoppingList() {
   // on-click of button on specific recipe
   // calls pantry.determineIfHasIngredients()
   // adds needed ingredients to users shopping list
+}
+
+function addToRecipeQueue() {
+  // on-click of button on specific recipe
+  // calls user.addRecipeToQueue()
+  let chosenRecipe = recipeData.find(recipe => {
+    return recipe.id == event.target.id;
+  });
 }
 
 function cookRecipe() {
