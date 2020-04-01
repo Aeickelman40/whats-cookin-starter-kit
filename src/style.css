@@ -21,16 +21,16 @@ body {
 }
 
 aside {
-  min-width: 100%;
   background-color: #EEEEEE;
   border: 2px solid grey;
+  min-width: 100%;
 }
 
 nav {
+  background-color: grey;
   display: flex;
   flex-direction: row;
   min-width: 80%;
-  background-color: grey;
 }
 
 #home-button,
@@ -43,11 +43,11 @@ nav {
 #search-pantry-input {
   border: 1px solid #000;
   border-radius: 3px;
-  font-family: 'Gotu', sans-serif;
-  margin: 5px;
-  font-size: 20px;
-  position: relative;
   bottom: 10px;
+  font-family: 'Gotu', sans-serif;
+  font-size: 20px;
+  margin: 5px;
+  position: relative;
 }
 
 #home-button,
@@ -56,10 +56,10 @@ nav {
 #all-recipes-button,
 #shopping-list-button,
 #cooked-recipes-button {
-  float: right;
   background-color: #EBF5EE;
-  position: relative;
   bottom: 80px;
+  float: right;
+  position: relative;
   width: 15%;
 }
 
@@ -68,25 +68,27 @@ nav {
 #recipes-to-cook-button:hover,
 #all-recipes-button:hover,
 #cooked-recipes-button:hover,
-#shopping-list-button:hover {
-  transform: scale(1.05);
+#shopping-list-button:hover,
+#search-recipes-button:hover,
+#pantry-search-button:hover {
   background-color: #747474;
   color: white;
   cursor: pointer;
+  transform: scale(1.05);
 }
 
 #search-recipes-input {
-  width: 40.5%;
+  bottom: 75px;
   float: right;
   position: relative;
-  bottom: 75px;
+  width: 40.5%;
 }
 
 #search-pantry-input {
-  width: 75%;
-  position: relative;
+  font-size: 18px;
   left: 18px;
-  font-size: 15px;
+  position: relative;
+  width: 75%;
 }
 
 #recipes-container {
@@ -94,35 +96,42 @@ nav {
   columns: 2;
 }
 
-#search-recipes-button {
+#search-recipes-button,
+#pantry-search-button {
   font-family: 'Gotu', sans-serif;
-  font-size: 20px;
-  float: right;
   position: relative;
+}
+
+#search-recipes-button {
   bottom: 70px;
+  float: right;
+  font-size: 20px;
   left: 592px;
 }
 
 #pantry-search-button {
-  font-family: 'Gotu', sans-serif;
+  bottom: 10px;
   font-size: 18px;
-  position: relative;
-  left: 90px;
+  left: 9px;
+}
+
+.search-icon {
+  width: 22px;
 }
 
 .recipe-card {
   background-color: #EEEEEE;
-  width: 80%;
+  border: 2px solid grey;
   display: inline-block;
   margin: 25px;
   padding: 15px;
-  border: 2px solid grey;
+  width: 80%;
 }
 
 .recipe-image {
-  width: 50%;
   align-self: center;
   margin: 15px;
+  width: 50%;
 }
 
 .recipe-name {
@@ -145,19 +154,19 @@ nav {
 }
 
 .recipe-button {
-  font-family: 'Gotu', sans-serif;
   background-color: #EBF5EE;
-  font-size: 12px;
-  padding: 10px;
   border-radius: 3px;
+  font-family: 'Gotu', sans-serif;
+  font-size: 12px;
   margin: 10px;
+  padding: 10px;
 }
 
 .recipe-button:hover {
-  transform: scale(1.05);
   background-color: #747474;
   color: white;
   cursor: pointer;
+  transform: scale(1.05);
 }
 
 .recipe-buttons-container {
@@ -182,12 +191,12 @@ nav {
 }
 
 .ingredient-card {
+  align-self: center;
   background-color: #EBF5EE;
-  width: 80%;
-  padding: 7px;
   border: 2px solid grey;
   margin: 10px;
-  align-self: center;
+  padding: 7px;
+  width: 80%;
 }
 
 .capitalize {

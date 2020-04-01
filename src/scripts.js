@@ -89,23 +89,24 @@ function searchRecipes() {
     var recipeIngredient = recipeCards[i].querySelector('.ingredients-box');
     var recipeTag = recipeCards[i].querySelector('.recipe-tags');
     if (recipeName.innerText.includes(searchRecipesInput.value) ||
-      recipeIngredient.innerText.includes(searchRecipesInput.value) ||
-      recipeTag.innerText.includes(searchRecipesInput.value)) {
-      recipeCards[i].classList.remove('hidden');
-    } else {
-      recipeCards[i].classList.add('hidden');
-    }
-  }
+          recipeIngredient.innerText.includes(searchRecipesInput.value) ||
+          recipeTag.innerText.includes(searchRecipesInput.value)) {
+          recipeCards[i].classList.remove('hidden');
+        } else {
+          recipeCards[i].classList.add('hidden');
+        }
+      }
 }
 
 function searchPantry() {
   var ingredientCards = Array.from(document.querySelectorAll('.ingredient-card'));
+  console.log(ingredientCards.length);
   for (var i = 0; i < ingredientCards.length; i++) {
     var ingredientName = ingredientCards[i].querySelector('.ingredient-name');
-    if (ingredientName.innerText.includes(searchPantryInput.value)) {
-      ingredientCards[i].classList.remove('hidden');
-    } else {
+    if (!ingredientName.innerText.includes(searchPantryInput.value)) {
       ingredientCards[i].classList.add('hidden');
+    } else {
+      ingredientCards[i].classList.remove('hidden');
     }
   }
 }
