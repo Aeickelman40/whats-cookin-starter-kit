@@ -15,22 +15,24 @@ class User {
     this.favoriteRecipes.push(recipe);
   }
   removeFromFavorites(recipeToRemove) {
-    let matchingRecipe = this.favoriteRecipes.find(recipe => {
+    let matchingRecipeIndex = this.favoriteRecipes.findIndex(recipe => {
       return recipeToRemove.id == recipe.id;
     })
-    console.log('matching', matchingRecipe);
-    this.favoriteRecipes.splice(matchingRecipe, 1);
+    this.favoriteRecipes.splice(matchingRecipeIndex, 1);
   }
-  // try for loop 
   cookRecipe(recipeToCook) {
     this.removeFromRecipesToCook(recipeToCook);
     this.addToRecipesCooked(recipeToCook);
     pantry.removeUsedIngredients(recipeToCook);
   }
-  removeFromRecipesToCook(recipeToCook) {
-    return this.recipesToCook.find(recipe => {
-      return recipeToCook.id === recipe.id;
+  addRecipeToQueue(recipeToCook) {
+    this.recipesToCook.push(recipeToCook)
+  }
+  removeFromRecipesToCook(recipeToRemove) {
+    let matchingRecipeIndex = this.recipesToCook.findIndex(recipe => {
+      return recipeToRemove.id == recipe.id;
     })
+    this.recipesToCook.splice(matchingRecipeIndex, 1);
   }
   addToRecipesCooked(recipeCooked) {
     this.recipesCooked.push(recipeCooked);
