@@ -201,3 +201,17 @@ nav {
 .hidden {
   display: none;
 }
+
+#shopping-list-container {
+  column-width: 5em;
+  columns: 2;
+}
+
+.shopping-list-card {
+  background-color: #EEEEEE;
+  width: 80%;
+  display: inline-block;
+  margin: 25px;
+  padding: 15px;
+  border: 2px solid grey;
+}
