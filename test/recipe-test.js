@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Recipe = require('../src/recipe');
+const Ingredient = require('../src/ingredient');
 const testRecipes = require('../data/test-recipes.js');
 const testIngredients = require('../data/test-ingredients.js');
 
@@ -135,19 +136,19 @@ describe('Recipe', () => {
   });
 
   it('should calculate the cost of its ingredients', function() {
-    //I think I can reduce the required decimal places uses the toFixed(2) method to keep it just to 177.76
+    // ingredient = new Ingredient(testIngredients[0]);
     expect(recipe.calculateCost()).to.equal(177.76000000000002);
   });
 
 
   it('should filter recipes by tag', function() {
+    // ingredient = new Ingredient(testIngredients[0]);
     let filteredRecipes = recipe.filterByTag('starter');
     expect(filteredRecipes.length).to.equal(1);
   });
 
   it('should filter recipes by ingredient', function() {
     let filteredRecipes = recipe.filterByIngredient('instant vanilla pudding');
-// Work on this later, still a little buggy
     expect(filteredRecipes.length).to.equal(0);
   })
 
