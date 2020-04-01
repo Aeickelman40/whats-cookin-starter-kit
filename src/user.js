@@ -37,6 +37,11 @@ class User {
   addToRecipesCooked(recipeCooked) {
     this.recipesCooked.push(recipeCooked);
   }
+  pushToShoppingList(neededIngredients) {
+    neededIngredients.forEach(ingredient => {
+      this.shoppingList.push(ingredient);
+    })
+  }
 }
 
 if (typeof module !== 'undefined') {
