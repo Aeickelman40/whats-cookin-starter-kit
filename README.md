@@ -5,25 +5,36 @@ The What's Cookin'? Project is a paired project for Front End Module 2 students 
 ## Contributors
 
 [Collin Kallery](https://github.com/collinkallery)
+
 [Alex Eickelman](https://github.com/Aeickelman40)
 
 ## Installing / Getting started
 
-To install
-
+To install run the following commands in your terminal:
 ```
+git clone git@github.com:Aeickelman40/whats-cookin-starter-kit.git
 ```
-
-Here you should say what actually happens when you execute the code above.
-
+cd into the cloned repository
+```
+npm install
+npm run 
+cd src
+open index.html
+```
 
 ## Features
 
-What's all the bells and whistles this project can perform?
-* What's the main functionality
-* You can also do another thing
-* If you get really randy, you can even do this
+While navigating through the website, you will notice a number of key features:
 
+- Unique buttons for the users previously cooked recipes, favorite recipes, recipes they plan on cooking, and a shopping list of required ingredients needed by the user.
 
+- A search bar that can filter desired recipes by the name, ingredients, or tags.
 
+- A search bar to filter items located within the users pantry. 
+
+- Each displayed recipe will have a name, picture for reference, instructions, ingredients, tags, a 3 buttons (favorite this recipe, add the recipe to cooking queue, and request to cook recipe).
+
+- When a user requests to cook a recipe, a function will run that checks the required ingredients with what the user has in the pantry. The DOM will update accordingly to remove ingredients from the pantry and a message will appear notifying the user whether they have all required ingredients or not. If not, the ingredients will be added to the users shopping list. 
+
+## In Action
 
