@@ -39,7 +39,8 @@ nav {
 #all-recipes-button,
 #cooked-recipes-button,
 #shopping-list-button,
-#search-recipes-input {
+#search-recipes-input,
+#search-pantry-input {
   border: 1px solid #000;
   border-radius: 3px;
   font-family: 'Gotu', sans-serif;
@@ -55,11 +56,11 @@ nav {
 #all-recipes-button,
 #shopping-list-button,
 #cooked-recipes-button {
-    float: right;
-    background-color: #EBF5EE;
-    position: relative;
-    bottom: 80px;
-    width: 15%;
+  float: right;
+  background-color: #EBF5EE;
+  position: relative;
+  bottom: 80px;
+  width: 15%;
 }
 
 #home-button:hover,
@@ -81,9 +82,32 @@ nav {
   bottom: 75px;
 }
 
+#search-pantry-input {
+  width: 75%;
+  position: relative;
+  left: 18px;
+  font-size: 15px;
+}
+
 #recipes-container {
   column-width: 5em;
   columns: 2;
+}
+
+#search-recipes-button {
+  font-family: 'Gotu', sans-serif;
+  font-size: 20px;
+  float: right;
+  position: relative;
+  bottom: 70px;
+  left: 592px;
+}
+
+#pantry-search-button {
+  font-family: 'Gotu', sans-serif;
+  font-size: 18px;
+  position: relative;
+  left: 90px;
 }
 
 .recipe-card {
@@ -129,7 +153,7 @@ nav {
   margin: 10px;
 }
 
-.recipe-button:hover{
+.recipe-button:hover {
   transform: scale(1.05);
   background-color: #747474;
   color: white;
