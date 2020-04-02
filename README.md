@@ -38,6 +38,6 @@ While navigating through the website, you will notice a number of key features:
 
 ## In Action
 
-![](/gif/Whats Cookin' ex1.gif)
+![](/file:///Users/alexeickelman/turing/mod2/project/whats-cooking/gifs/Whats%20Cookin'%20ex1.gif)
 
-![](/gif/Whats Cookin' ex2.gif)
+![](file:///Users/alexeickelman/turing/mod2/project/whats-cooking/gifs/Whats%20Cooking%20ex.2.gif)
