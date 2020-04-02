@@ -10,16 +10,16 @@ class Recipe {
     this.recipeData = recipeData;
   }
   calculateCost() {
-    return this.ingredients.reduce((sum, ingredient) => {
-      let matchingIngredient = this.ingredientsData.find(specificIngredient => {
-        return specificIngredient.id === ingredient.id;
-      });
-      console.log(matchingIngredient);
-      let dollars = (((matchingIngredient.estimatedCostInCents) * (ingredient.quantity.amount)) / 100)
-      sum += dollars;
-      return sum;
-    }, 0)
-  }
+  let totalCost = 0;
+  this.ingredients.forEach(currentIngredient => {
+    this.ingredientsData.forEach(ingredient => {
+      if (currentIngredient.id === ingredient.id) {
+        totalCost += (ingredient.estimatedCostInCents * currentIngredient.quantity.amount) / 100;
+      }
+    });
+  });
+  return totalCost;
+}
   getInstructions() {
     return this.instructions;
   }
