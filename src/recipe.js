@@ -14,6 +14,7 @@ class Recipe {
       let matchingIngredient = this.ingredientsData.find(specificIngredient => {
         return specificIngredient.id === ingredient.id;
       });
+      console.log(matchingIngredient);
       let dollars = (((matchingIngredient.estimatedCostInCents) * (ingredient.quantity.amount)) / 100)
       sum += dollars;
       return sum;

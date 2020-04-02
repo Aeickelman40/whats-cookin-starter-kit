@@ -65,6 +65,13 @@ describe('Pantry', () => {
     ])
   });
 
+  it('should be able to tell the difference between the ingredient in amount in the pantry and recipe', function () {
+    let recipe = recipeData[0];
+
+    pantry.calculateDifference(recipeAmount,pantryAmount);
+    expect(pantry)
+  });
+
   it('should remove used ingredients from pantry after recipe is made', function() {
     let recipe = recipeData[1];
 
