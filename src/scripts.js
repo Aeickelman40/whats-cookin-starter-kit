@@ -1,5 +1,5 @@
-const headerButtonsContainer = document.querySelector(".header-buttons");
-const allRecipesButton = document.querySelector("#all-recipes-button");
+// const headerButtonsContainer = document.querySelector(".header-buttons");
+// const allRecipesButton = document.querySelector("#all-recipes-button");
 const homeButton = document.querySelector("#home-button");
 const cookedRecipesButton = document.querySelector("#cooked-recipes-button");
 const favoriteRecipesButton = document.querySelector("#favorite-recipes-button");
@@ -88,13 +88,13 @@ function searchRecipes() {
     var recipeIngredient = card.querySelector('.ingredients-box');
     var recipeTag = card.querySelector('.recipe-tags');
     if (recipeName.innerText.includes(searchRecipesInput.value) ||
-          recipeIngredient.innerText.includes(searchRecipesInput.value) ||
-          recipeTag.innerText.includes(searchRecipesInput.value)) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      })
+      recipeIngredient.innerText.includes(searchRecipesInput.value) ||
+      recipeTag.innerText.includes(searchRecipesInput.value)) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  })
 }
 
 function searchPantry() {
@@ -244,7 +244,7 @@ function addToRecipeQueue() {
     chosenUser.addRecipeToQueue(chosenRecipe);
     event.target.classList.add("button-active");
     event.target.innerText = "Recipe Added to Queue";
-  };
+  }
 }
 
 function cookRecipe() {
