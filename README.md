@@ -37,7 +37,6 @@ While navigating through the website, you will notice a number of key features:
 - When a user requests to cook a recipe, a function will run that checks the required ingredients with what the user has in the pantry. The DOM will update accordingly to remove ingredients from the pantry and a message will appear notifying the user whether they have all required ingredients or not. If not, the ingredients will be added to the users shopping list. 
 
 ## In Action
+![What's cooking ex  1](https://user-images.githubusercontent.com/57731927/78261297-4cd62e00-74bc-11ea-9e0e-d6fa4b8dd232.gif)
 
-![](/file:///Users/alexeickelman/turing/mod2/project/whats-cooking/gifs/Whats%20Cookin'%20ex1.gif)
-
-![](file:///Users/alexeickelman/turing/mod2/project/whats-cooking/gifs/Whats%20Cooking%20ex.2.gif)
+![Whats cooking ex 2](https://user-images.githubusercontent.com/57731927/78261636-b2c2b580-74bc-11ea-918c-ba6c4a91fa4d.gif)
