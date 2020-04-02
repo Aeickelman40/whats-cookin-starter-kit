@@ -40,7 +40,9 @@ nav {
 #cooked-recipes-button,
 #shopping-list-button,
 #search-recipes-input,
-#search-pantry-input {
+#search-pantry-input,
+#search-recipes-button,
+#pantry-search-button {
   border: 1px solid #000;
   border-radius: 3px;
   bottom: 10px;
@@ -59,7 +61,6 @@ nav {
   background-color: #EBF5EE;
   bottom: 80px;
   float: right;
-  position: relative;
   width: 15%;
 }
 
@@ -80,14 +81,12 @@ nav {
 #search-recipes-input {
   bottom: 75px;
   float: right;
-  position: relative;
   width: 40.5%;
 }
 
 #search-pantry-input {
   font-size: 18px;
   left: 18px;
-  position: relative;
   width: 75%;
 }
 
@@ -98,21 +97,20 @@ nav {
 
 #search-recipes-button,
 #pantry-search-button {
-  font-family: 'Gotu', sans-serif;
-  position: relative;
+  background-color: #EBF5EE;
 }
 
 #search-recipes-button {
-  bottom: 70px;
+  bottom: 75px;
   float: right;
   font-size: 20px;
-  left: 592px;
+  left: 596px;
 }
 
 #pantry-search-button {
   bottom: 10px;
   font-size: 18px;
-  left: 9px;
+  left: 4px;
 }
 
 .search-icon {
