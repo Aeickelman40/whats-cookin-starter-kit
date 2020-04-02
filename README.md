@@ -10,7 +10,7 @@ The What's Cookin'? Project is a paired project for Front End Module 2 students 
 
 ## Installing / Getting started
 
-To install run the following commands in your terminal:
+To install and view, run the following commands in your terminal:
 ```
 git clone git@github.com:Aeickelman40/whats-cookin-starter-kit.git
 ```
