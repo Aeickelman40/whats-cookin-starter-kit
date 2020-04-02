@@ -13,9 +13,6 @@ class Pantry {
       return false;
     }
   }
-  convertIngredientIdToName() {
-
-  }
   getNeededIngredients(recipe) {
     let userNeeds = [];
     recipe.ingredients.forEach(recipeIngredient => {
@@ -38,6 +35,26 @@ class Pantry {
       }
     });
     return userNeeds;
+  }
+  pushToPantry(shoppingList) {
+    shoppingList.forEach(shoppingIngredient => {
+      let pantryItem = this.pantry.find(currentPantryItem => {
+        console.log('sl', shoppingList);
+        console.log('pant', this.pantry);
+        return shoppingIngredient.ingredient == currentPantryItem.ingredient;
+      });
+      if (pantryItem) {
+        pantryItem.amount = pantryItem.amount + shoppingIngredient.amount;
+      } else {
+        this.pantry.push({
+          "ingredient": shoppingIngredient.ingredient,
+          "amount": shoppingIngredient.amount,
+          "name": shoppingIngredient.name,
+          "estimatedCostInCents": shoppingIngredient.estimatedCostInCents
+        });
+      }
+    })
+    console.log('2', this.pantry);
   }
   calculateDifference(recipeAmount, pantryAmount) {
     let difference = recipeAmount - pantryAmount;

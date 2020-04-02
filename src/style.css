@@ -55,7 +55,7 @@ nav {
 #recipes-to-cook-button,
 #all-recipes-button,
 #shopping-list-button,
-#cooked-recipes-button {
+#cooked-recipes-button  {
   background-color: #EBF5EE;
   bottom: 80px;
   float: right;
@@ -70,7 +70,8 @@ nav {
 #cooked-recipes-button:hover,
 #shopping-list-button:hover,
 #search-recipes-button:hover,
-#pantry-search-button:hover {
+#pantry-search-button:hover,
+#buy-all-button  {
   background-color: #747474;
   color: white;
   cursor: pointer;
@@ -212,15 +213,35 @@ nav {
 }
 
 #shopping-list-container {
-  column-width: 5em;
-  columns: 2;
+  display: inline-block;
+  width: 300%;
 }
 
 .shopping-list-card {
   background-color: #EEEEEE;
-  width: 80%;
-  display: inline-block;
-  margin: 25px;
+  width: 100%;
+  margin: 70px;
   padding: 15px;
+  display: inline-block;
   border: 2px solid grey;
+  align-self: center;
+}
+
+#buy-all-button {
+  align-self: center;
+  border: 1px solid #000;
+  border-radius: 3px;
+  font-family: 'Gotu', sans-serif;
+  font-size: 20px;
+  margin: 20px;
+}
+
+.shopping-item-holder {
+  width: 100%;
+  column-width: 5em;
+  columns: 4;
+}
+
+.shopping-header {
+  text-align: center;
 }
