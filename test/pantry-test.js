@@ -4,11 +4,10 @@ const Pantry = require('../src/pantry');
 const pantryData = require('../data/test-pantry.js')
 const userData = require('../data/test-user.js');
 const recipeData = require('../data/test-recipes.js');
-const ingredientsData = require('../data/test-ingredients.js');
 
 describe('Pantry', () => {
   beforeEach(() => {
-    pantry = new Pantry(userData, userData.pantry, recipeData, ingredientsData);
+    pantry = new Pantry(userData, userData.pantry, recipeData);
   });
   it('should be an instance of Pantry', function() {
     expect(pantry).to.be.an.instanceof(Pantry);

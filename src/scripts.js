@@ -1,21 +1,30 @@
-// const headerButtonsContainer = document.querySelector(".header-buttons");
-// const allRecipesButton = document.querySelector("#all-recipes-button");
+//NAV BUTTTONS
 const homeButton = document.querySelector("#home-button");
 const cookedRecipesButton = document.querySelector("#cooked-recipes-button");
 const favoriteRecipesButton = document.querySelector("#favorite-recipes-button");
 const recipesToCookButton = document.querySelector("#recipes-to-cook-button");
 const shoppingListButton = document.querySelector("#shopping-list-button");
+const welcomeUserBanner = document.querySelector("#welcome-user-banner");
+
+//SEACH INPUTS
 const searchPantryInput = document.querySelector("#search-pantry-input");
 const searchRecipesInput = document.querySelector("#search-recipes-input");
 const ingredientsContainer = document.querySelector("#ingredients-container");
-const shoppingListContainer = document.querySelector("#shopping-list-container")
+
+//EVENT DELEGATION LISTENERS
+const shoppingItemHolder = document.querySelector(".shopping-item-holder")
 const recipesContainer = document.querySelector("#recipes-container");
-const welcomeUserBanner = document.querySelector("#welcome-user-banner");
+
+//RECIPE BUTTONS
 const searchRecipesButton = document.querySelector("#search-recipes-button");
 const searchPantryButton = document.querySelector("#pantry-search-button");
+const buyAllButton = document.querySelector("#buy-all-button");
+
+//INSTANTIATION
 const randomUser = usersData[Math.floor(Math.random() * usersData.length)];
 const chosenUser = new User(randomUser);
-const chosenPantry = new Pantry(chosenUser, chosenUser.pantry);
+const chosenPantry = new Pantry(chosenUser, chosenUser.pantry)
+const ingredientsList = ingredientsData.map(ingredient => new Ingredient(ingredient))
 
 searchRecipesButton.addEventListener("click", searchRecipes);
 searchPantryButton.addEventListener("click", searchPantry);
@@ -25,51 +34,85 @@ favoriteRecipesButton.addEventListener("click", showFavoriteRecipes);
 cookedRecipesButton.addEventListener("click", showCookedRecipes);
 homeButton.addEventListener("click", returnHome);
 recipesContainer.addEventListener("click", recipeButtonHandler);
-
+buyAllButton.addEventListener("click", buyIngredients)
 
 window.onload = displayData();
 
-function returnHome() {
-  let recipeCards = Array.from(document.querySelectorAll('.recipe-card'));
-  recipesContainer.classList.remove("hidden");
-  shoppingListContainer.classList.add("hidden");
-  recipeCards.forEach(card => {
-    card.classList.remove("hidden");
-  })
+//DISPLAYING DATA ON PAGE LOAD:
+function displayData() {
+  displayUserInfo();
+  displayRecipes();
+  console.log("before", chosenPantry)
 }
 
-function showCookedRecipes() {
-
+function displayUserInfo() {
+  let userPantry = chosenUser.pantry;
+  welcomeUserBanner.innerHTML += `${chosenUser.name}`;
+  userPantry.forEach(ingredient => {
+    // convertPantryIdsToIngredientNames(userPantry)
+    getIngredientById(ingredient);
+    ingredientsContainer.innerHTML += `
+    <section class="ingredient-card">
+      <p class="ingredient-name capitalize">Ingredient: ${ingredient.name}</p>
+      <p class="ingredient-amount">Amount: ${ingredient.amount}</p>
+    </section>`
+  });
+  return chosenUser;
 }
 
-function showFavoriteRecipes() {
-  let favoriteButtons = Array.from(document.querySelectorAll('.favorite-recipe-button'));
-  recipesContainer.classList.remove("hidden");
-  shoppingListContainer.classList.add("hidden");
-  favoriteButtons.forEach(button => {
-    if (!button.classList.contains("button-active")) {
-      button.closest(".recipe-card").classList.add("hidden");
-    }
-  })
-}
-
-function showRecipeQueue() {
-  let queueButtons = Array.from(document.querySelectorAll('.add-to-queue-button'));
-  recipesContainer.classList.remove("hidden");
-  shoppingListContainer.classList.add("hidden");
-  queueButtons.forEach(button => {
-    if (!button.classList.contains("button-active")) {
-      button.closest(".recipe-card").classList.add("hidden");
-    }
+function displayRecipes() {
+  recipeData.forEach(recipe => {
+    let newRecipe = new Recipe(recipe,
+      ingredientsList,
+      recipeData);
+    newRecipe.ingredients.forEach(ingredient => {
+      convertRecipeIdsToIngredientNames(newRecipe);
+    })
+    let cost = newRecipe.calculateCost()
+    let instructions = newRecipe.instructions.map(instruction => `<li>${instruction.instruction}</li>`).join("\n");
+    let ingredients = newRecipe.ingredients.map(ingredient => `<li>${ingredient.name}
+      (${ingredient.quantity.amount}
+       ${ingredient.quantity.unit})</li>`)
+       .join("\n");
+    recipesContainer.innerHTML += `
+    <section id="${newRecipe.id}" class="recipe-card">
+      <div class="recipe-name-container">
+        <h2 class="recipe-name">${newRecipe.name}</h2>
+        <button class="recipe-button favorite-recipe-button">Favorite This Recipe</button>
+      </div>
+      <div class="recipe-info-container">
+        <div class="instructions-container">
+          <h3 class="recipe-info-header">Cooking Instructions:<h3>
+          <ol class="recipe-info">
+            ${instructions}
+          </ol>
+        </div>
+        <h3 class="recipe-info-header">Ingredients:<h3>
+        <div class="ingredients-box">
+          <ul class="recipe-info capitalize">
+            ${ingredients}
+          </ul>
+          <img class="recipe-image" src=${newRecipe.image}>
+        </div>
+        <div class="recipe-buttons-container">
+          <button class="recipe-button add-to-queue-button">Add Recipe to Cooking Queue</button>
+          <button class="recipe-button cook-recipe-button">Cook This Recipe!</button>
+        </div>
+        <p class="capitalize recipe-tags">Tags: ${newRecipe.tags}</p>
+      </div>
+      <p>Estimated Cost: ${cost}
+    </section>`
   });
 }
 
+// NAV BUTTON FUNCTIONALITY:
 function showShoppingList() {
   recipesContainer.classList.add("hidden");
-  shoppingListContainer.classList.remove("hidden");
+  shoppingItemHolder.classList.remove("hidden");
   chosenUser.shoppingList.forEach(neededIngredient => {
-    convertShoppingIdsToIngredientNames(chosenUser.shoppingList);
-    shoppingListContainer.innerHTML += `
+    getIngredientById(neededIngredient);
+    console.log(chosenUser.shoppingList);
+    shoppingItemHolder.innerHTML += `
     <section class="shopping-list-card">
       <div class="shopping-list-item-name capitalize">
         Needed Ingredient: ${neededIngredient.name}
@@ -77,10 +120,55 @@ function showShoppingList() {
       <div class="shopping-list-item-amount capitalize">
         Amount Needed: ${neededIngredient.amount}
       </div>
+      <div class="shopping-list-cost">
+        Estimated Cost: ${neededIngredient.estimatedCostInCents}
     </section`
   })
 }
 
+function showRecipeQueue() {
+  let queueButtons = Array.from(document.querySelectorAll('.add-to-queue-button'));
+  recipesContainer.classList.remove("hidden");
+  shoppingItemHolder.classList.add("hidden");
+  queueButtons.forEach(button => {
+    if (!button.classList.contains("button-active")) {
+      button.closest(".recipe-card").classList.add("hidden");
+    }
+  });
+}
+
+function showFavoriteRecipes() {
+  let favoriteButtons = Array.from(document.querySelectorAll('.favorite-recipe-button'));
+  recipesContainer.classList.remove("hidden");
+  shoppingItemHolder.classList.add("hidden");
+  favoriteButtons.forEach(button => {
+    if (!button.classList.contains("button-active")) {
+      button.closest(".recipe-card").classList.add("hidden");
+    }
+  })
+}
+
+function showCookedRecipes() {
+  let cookButtons = Array.from(document.querySelectorAll('.cook-recipe-button'));
+  recipesContainer.classList.remove("hidden");
+  shoppingItemHolder.classList.add("hidden");
+  cookButtons.forEach(button => {
+    if (!button.classList.contains("button-active")) {
+      button.closest(".recipe-card").classList.add("hidden");
+    }
+  })
+}
+
+function returnHome() {
+  let recipeCards = Array.from(document.querySelectorAll('.recipe-card'));
+  recipesContainer.classList.remove("hidden");
+  shoppingItemHolder.classList.add("hidden");
+  recipeCards.forEach(card => {
+    card.classList.remove("hidden");
+  })
+}
+
+// SEARCH BAR FUNCTIONALITY
 function searchRecipes() {
   var recipeCards = Array.from(document.querySelectorAll('.recipe-card'));
   recipeCards.forEach(card => {
@@ -109,105 +197,10 @@ function searchPantry() {
   })
 }
 
-function convertRecipeIdsToIngredientNames(recipe) {
-  recipe.ingredients.forEach(ingredient => {
-    ingredientsData.find(item => {
-      if (ingredient.id === item.id) {
-        ingredient.name = item.name;
-      }
-    })
-  })
-}
-
-function convertPantryIdsToIngredientNames(pantry) {
-  pantry.forEach(ingredient => {
-    ingredientsData.find(item => {
-      if (ingredient.ingredient === item.id) {
-        ingredient.name = item.name;
-      }
-    })
-  })
-}
-
-function convertShoppingIdsToIngredientNames(shoppingList) {
-  shoppingList.forEach(neededIngredient => {
-    ingredientsData.find(item => {
-      if (neededIngredient.ingredient === item.id) {
-        neededIngredient.name = item.name;
-      }
-    })
-  })
-}
-
-function displayData() {
-  displayUserInfo();
-  displayRecipes();
-}
-
-function displayUserInfo() {
-  let userPantry = chosenUser.pantry;
-  welcomeUserBanner.innerHTML += `${chosenUser.name}`;
-  userPantry.forEach(ingredient => {
-    convertPantryIdsToIngredientNames(userPantry)
-    ingredientsContainer.innerHTML += `
-    <section class="ingredient-card">
-      <p class="ingredient-name capitalize">Ingredient: ${ingredient.name}</p>
-      <p class="ingredient-amount">Amount: ${ingredient.amount}</p>
-    </section>`
-  });
-  return chosenUser;
-}
-
-function displayRecipes() {
-  recipeData.forEach(recipe => {
-    let newRecipe = new Recipe(recipe,
-      ingredientsData,
-      recipeData);
-    convertRecipeIdsToIngredientNames(newRecipe)
-    let instructions = newRecipe.instructions.map(instruction => `<li>${instruction.instruction}</li>`).join("\n");
-    let ingredients = newRecipe.ingredients.map(ingredient => `<li>${ingredient.name} (${ingredient.quantity.amount} ${ingredient.quantity.unit})</li>`).join("\n");
-    recipesContainer.innerHTML += `
-    <section id="${newRecipe.id}" class="recipe-card">
-      <div class="recipe-name-container">
-        <h2 class="recipe-name">${newRecipe.name}</h2>
-        <button class="recipe-button favorite-recipe-button">Favorite This Recipe</button>
-      </div>
-      <div class="recipe-info-container">
-        <div class="instructions-container">
-          <h3 class="recipe-info-header">Cooking Instructions:<h3>
-          <ol class="recipe-info">
-            ${instructions}
-          </ol>
-        </div>
-        <h3 class="recipe-info-header">Ingredients:<h3>
-        <div class="ingredients-box">
-          <ul class="recipe-info capitalize">
-            ${ingredients}
-          </ul>
-          <img class="recipe-image" src=${newRecipe.image}>
-        </div>
-        <div class="recipe-buttons-container">
-          <button class="recipe-button add-ingredients-button">Add Ingredients to Shopping List</button>
-          <button class="recipe-button add-to-queue-button">Add Recipe to Cooking Queue</button>
-          <button class="recipe-button cook-recipe-button">Cook This Recipe!</button>
-        </div>
-        <p class="capitalize recipe-tags">Tags: ${newRecipe.tags}</p>
-      </div>
-    </section>`
-  });
-}
-
-function expandRecipeInfo() {
-  // function that makes a specific recipe full-screen,
-  // shows instructions and ingredients
-}
-
+// RECIPE BUTTON FUNCTIONALITY
 function recipeButtonHandler() {
   if (event.target.classList.contains("favorite-recipe-button")) {
     favoriteRecipe(event);
-  }
-  if (event.target.classList.contains("add-ingredients-button")) {
-    addToShoppingList(event);
   }
   if (event.target.classList.contains("add-to-queue-button")) {
     addToRecipeQueue(event);
@@ -252,7 +245,12 @@ function cookRecipe() {
     return recipe.id == event.target.closest('.recipe-card').id;
   })
   if (chosenPantry.determineIfHasIngredients(chosenRecipe)) {
-    chosenUser.addToRecipesCooked(chosenRecipe)
+    chosenUser.addToRecipesCooked(chosenRecipe);
+    chosenPantry.removeUsedIngredients(chosenRecipe);
+    console.log(('second', chosenPantry));
+    event.target.classList.add("button-active");
+    event.target.disabled = true;
+    event.target.innerText = "Already Cooked!"
     alert("Yum! Used ingredients were removed from your pantry.");
   } else {
     chosenUser.pushToShoppingList(chosenPantry.getNeededIngredients(chosenRecipe))
@@ -260,35 +258,30 @@ function cookRecipe() {
   }
 }
 
+function buyIngredients() {
+    chosenPantry.pushToPantry(chosenUser.shoppingList);
+    alert("Items Purchased");
+    shoppingItemHolder.classList.add("hidden");
+    recipesContainer.classList.remove("hidden");
+}
 
-// TODO:
-// Instantiate all ingredients:
-// maybe when all of the recipes are
-// instantiated, we instantiate the ingredients
-// within each recipe
+// GETTING INGREDIENT BY ID
+function getIngredientById(ingredientBeingUsed) {
+  ingredientsList.forEach(dataIngredient => {
+    if (dataIngredient.id == ingredientBeingUsed.ingredient) {
+      ingredientBeingUsed.name = dataIngredient.name;
+      ingredientBeingUsed.estimatedCostInCents = dataIngredient.estimatedCostInCents;
+    }
+  })
+}
 
-// Costs:
-// Shopping list:
-// calculate cost of all needed ingredients
-// have "buy all ingredients" button, adds to pantry
-// On recipe card, displays cost for recipe? (needed ingredients)
-
-// Finish Tests:
-// Still a few tests to write for added methods in user & pantry
-// Make sure all methods are being used
-
-// Refactor the three conversion of ID functions into one?
-
-// Refactor for loops into forEach
-
-// Rethink all of the imports of data into classes (ingredientsData, etc)
-
-// Final CSS
-
-// Finish Readme
-
-// Organize the javascipt file
-
-// Organize CSS (specifically organize the properties)
-
-// IF WE HAVE TIME... maybe expandRecipeInfo()
+function convertRecipeIdsToIngredientNames(recipe) {
+  recipe.ingredients.forEach(ingredient => {
+    ingredientsData.find(item => {
+      if (ingredient.id === item.id) {
+        ingredient.name = item.name;
+        ingredient.estimatedCostInCents = item.estimatedCostInCents;
+      }
+    })
+  })
+}

@@ -1,9 +1,7 @@
 class Pantry {
-  constructor(user, pantry, recipeData, ingredientsData) {
+  constructor(user, pantry) {
     this.user = user;
     this.pantry = pantry;
-    this.recipeData = recipeData;
-    this.ingredientsData = ingredientsData;
   }
   determineIfHasIngredients(recipe) {
     var neededIngredients = this.getNeededIngredients(recipe);
@@ -12,9 +10,6 @@ class Pantry {
     } else {
       return false;
     }
-  }
-  convertIngredientIdToName() {
-
   }
   getNeededIngredients(recipe) {
     let userNeeds = [];
@@ -38,6 +33,24 @@ class Pantry {
       }
     });
     return userNeeds;
+  }
+  pushToPantry(shoppingList) {
+    shoppingList.forEach(shoppingIngredient => {
+      let pantryItem = this.pantry.find(currentPantryItem => {
+        return shoppingIngredient.ingredient == currentPantryItem.ingredient;
+      });
+      if (pantryItem) {
+        pantryItem.amount = pantryItem.amount + shoppingIngredient.amount;
+      } else {
+        this.pantry.push({
+          "ingredient": shoppingIngredient.ingredient,
+          "amount": shoppingIngredient.amount,
+          "name": shoppingIngredient.name,
+          "estimatedCostInCents": shoppingIngredient.estimatedCostInCents
+        });
+      }
+    })
+    console.log('pantry', this.pantry);
   }
   calculateDifference(recipeAmount, pantryAmount) {
     let difference = recipeAmount - pantryAmount;
