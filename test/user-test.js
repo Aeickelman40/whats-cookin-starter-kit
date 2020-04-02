@@ -1,15 +1,12 @@
 const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/user');
-const Ingredient = require('../src/ingredient');
 const userData = require('../data/test-user.js');
 const recipeData = require('../data/test-recipes.js');
-const ingredientsData = require('../data/test-ingredients.js');
-
 
 describe('User', () => {
   beforeEach(() => {
-    user = new User(userData, recipeData, ingredientsData);
+    user = new User(userData, recipeData);
   });
   it('should be an instance of User', function() {
     expect(user).to.be.an.instanceof(User);
@@ -38,15 +35,25 @@ describe('User', () => {
     expect(user.favoriteRecipes).to.deep.equal([]);
   });
 
-  it.skip('should be able to cook a recipe', function() {
-    
+  it('should be able to cook a recipe', function() {
+    let recipe1 = user.recipeData[0];
+
+    user.cookRecipe(recipe1);
+    expect(user.recipesCooked.length).to.equal(1);
   });
 
-  it.skip('should remove from recipes to cook', function() {
+  it('should remove from recipes to cook', function() {
+    let recipe1 = user.recipeData[0];
 
+    user.addRecipeToQueue(recipe1);
+    user.removeFromRecipesToCook(recipe1);
+    expect(user.recipesToCook).to.deep.equal([]);
   });
 
-  it.skip('should add to recipes cooked', function() {
+  it('should add to recipes cooked', function() {
+    let recipe1 = user.recipeData[0];
 
+    user.addToRecipesCooked(recipe1);
+    expect(user.recipesCooked.length).to.equal(1);
   });
 });

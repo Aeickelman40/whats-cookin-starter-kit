@@ -1,51 +1,40 @@
-# What's Cookin'? Starter Kit 
+# What's Cookin'?
 
-The details of this project are outlined in the <a href="https://frontend.turing.io/projects/whats-cookin.html" target="\__blank">project spec</a>.
+The What's Cookin'? Project is a paired project for Front End Module 2 students at the Turing School of Software and Design. The idea behind the project was to build a site in which users can view recipes, add recipes to cook, view their favorite recipes, and generate a shopping list based on ingredients needed. The main goals of this project were to structure code progression based around Test Driven Design, ES6 classes, and have functions and methods utilize a Singular Responsibility Principal. 
 
-## Set Up 
+## Contributors
 
-1. Within your group, decide on one person to have the project repository on their Github account. This person will *fork* this repository - on the top right corner of the page, click the fork button. 
-2. Both group members should then clone down the forked repository (make sure that everyone is added as a collaborator as well). Since you don't want your project to be named "whats-cookin-starter-kit", add an optional argument after the repo url when cloning. The command should look like this: `git clone [remote-address] [what you want to name the repo]`.
-3. Once you have cloned the repo, change into the directory and install the project dependencies. Run npm install to install project dependencies.
-4. Run open src/index.html in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-5. Make sure both members of your team are collaborators on the forked repo.
+[Collin Kallery](https://github.com/collinkallery)
 
-## Testing 
+[Alex Eickelman](https://github.com/Aeickelman40)
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran npm install, then the tooling you need to start testing is already installed (mocha and chai).
+## Installing / Getting started
 
-## Linting Your Code 
-
-Run the command in your terminal npm run lint to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
-
-Your linter will look only at the JavaScript files you have within the src and the test directories.
-
-
-## Data Model
-### Users
-```js
-{
-  "id": [number],
-  "name": [string],
-  "pantry": [array of objects with amount and ingredient id properties]
-},
+To install and view, run the following commands in your terminal:
+```
+git clone git@github.com:Aeickelman40/whats-cookin-starter-kit.git
+```
+cd into the cloned repository
+```
+npm install
+npm run 
+cd src
+open index.html
 ```
 
-### Recipes
-```js
-{
-  "ingredients" [array of objects with ingredients ids(connection to ingredients), ingredient names, and quantity data],
-  "instructions": [array of objects with instructions properties and numbered steps],
-  "name": [string],
-  "tags": [array of strings representing info about the recipes]
-}
-```
+## Features
 
-### Ingredients
-```js
-{
-  "estimatedCostInCents": [number],
-  "id": [number -- connection to users and recipes],
-  "name": [string]
-}
-```
+While navigating through the website, you will notice a number of key features:
+
+- Unique buttons for the users previously cooked recipes, favorite recipes, recipes they plan on cooking, and a shopping list of required ingredients needed by the user.
+
+- A search bar that can filter desired recipes by the name, ingredients, or tags.
+
+- A search bar to filter items located within the users pantry. 
+
+- Each displayed recipe will have a name, picture for reference, instructions, ingredients, tags, a 3 buttons (favorite this recipe, add the recipe to cooking queue, and request to cook recipe).
+
+- When a user requests to cook a recipe, a function will run that checks the required ingredients with what the user has in the pantry. The DOM will update accordingly to remove ingredients from the pantry and a message will appear notifying the user whether they have all required ingredients or not. If not, the ingredients will be added to the users shopping list. 
+
+## In Action
+

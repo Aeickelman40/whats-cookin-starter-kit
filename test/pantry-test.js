@@ -1,13 +1,13 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Pantry = require('../src/pantry');
+const pantryData = require('../data/test-pantry.js')
 const userData = require('../data/test-user.js');
 const recipeData = require('../data/test-recipes.js');
-const ingredientsData = require('../data/test-ingredients.js');
 
 describe('Pantry', () => {
   beforeEach(() => {
-    pantry = new Pantry(userData, userData.pantry, recipeData, ingredientsData);
+    pantry = new Pantry(userData, userData.pantry, recipeData);
   });
   it('should be an instance of Pantry', function() {
     expect(pantry).to.be.an.instanceof(Pantry);
@@ -63,6 +63,13 @@ describe('Pantry', () => {
         amount: 0.5
       }
     ])
+  });
+
+  it('should be able to tell the difference between the ingredient in amount in the pantry and recipe', function() {
+    let recipe = recipeData[0];
+    let newPantry = pantryData[0];
+
+    expect(pantry.calculateDifference(recipe.ingredients[0].quantity.amount, newPantry.amount)).to.equal(-3.5);
   });
 
   it('should remove used ingredients from pantry after recipe is made', function() {

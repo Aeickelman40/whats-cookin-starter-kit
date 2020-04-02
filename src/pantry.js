@@ -1,9 +1,7 @@
 class Pantry {
-  constructor(user, pantry, recipeData, ingredientsData) {
+  constructor(user, pantry) {
     this.user = user;
     this.pantry = pantry;
-    this.recipeData = recipeData;
-    this.ingredientsData = ingredientsData;
   }
   determineIfHasIngredients(recipe) {
     var neededIngredients = this.getNeededIngredients(recipe);
@@ -39,8 +37,6 @@ class Pantry {
   pushToPantry(shoppingList) {
     shoppingList.forEach(shoppingIngredient => {
       let pantryItem = this.pantry.find(currentPantryItem => {
-        console.log('sl', shoppingList);
-        console.log('pant', this.pantry);
         return shoppingIngredient.ingredient == currentPantryItem.ingredient;
       });
       if (pantryItem) {
@@ -54,7 +50,7 @@ class Pantry {
         });
       }
     })
-    console.log('2', this.pantry);
+    console.log('pantry', this.pantry);
   }
   calculateDifference(recipeAmount, pantryAmount) {
     let difference = recipeAmount - pantryAmount;

@@ -1,5 +1,5 @@
 class User {
-  constructor(user, recipeData, ingredientsData) {
+  constructor(user, recipeData) {
     this.userId = user.id;
     this.name = user.name;
     this.pantry = user.pantry;
@@ -7,9 +7,7 @@ class User {
     this.recipesToCook = [];
     this.recipesCooked = [];
     this.shoppingList = [];
-    // check for usage
     this.recipeData = recipeData;
-    this.ingredientsData = ingredientsData;
   }
   addToFavorites(recipe) {
     this.favoriteRecipes.push(recipe);
