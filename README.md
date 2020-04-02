@@ -38,3 +38,4 @@ While navigating through the website, you will notice a number of key features:
 
 ## In Action
 
+![](Whats Cookin' ex1.gif)
